@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<p>This is the content of the <b>ABOUT page</b></p>
+
+<!-- post the information on the about page-->
+<form action="/about" method="post">
+    {{ form.hidden_tag() }}
+    {{ form.title.label }}
+    {{ form.title }}
+    {{ form.submit }}
+</form>
+
+<!-- displays the title on the about page-->
+{% if title %}
+    <h1>{{ title }}</h1>
+{% endif %}
+
+<!-- Display all saved tasks -->
+<h3>Saved Tasks:</h3>
+<ul>
+    {% for task in tasks %}
+        <li>{{ task.title }} - Created on {{ task.date }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
