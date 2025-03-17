@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="container mt-5">
+    <p>This is the content of the <b>RECTANGLE page</b></p>
+
+    <!-- Rectangle Form -->
+    <form action="/rectangle" method="post">
+        {{ form.hidden_tag() }}
+        <p>{{ form.length.label }} {{ form.length() }}</p>
+        <p>{{ form.width.label }} {{ form.width() }}</p>
+        <p>{{ form.area() }} {{ form.perimeter() }}</p>
+    </form>
+
+    <!-- Display Results After Submission -->
+    {% if area is not none %}
+        <h3>Calculated Area: {{ area }}</h3>
+    {% endif %}
+
+    {% if perimeter is not none %}
+        <h3>Calculated Perimeter: {{ perimeter }}</h3>
+    {% endif %}
+</div>
+{% endblock %}
